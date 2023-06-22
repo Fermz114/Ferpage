@@ -1,0 +1,44 @@
+<%- include ('layouts/header.ejs') %>
+
+<div class="container">
+    <h1><%= title %></h1>
+
+    <!--se coloca todo el diseño aqui-->
+        <table class="table table-bordered table-striped text-center mt-4">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Precio</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+
+            <tbody>
+              <!-- Leer la información de la base de datos-->
+
+              <% for (var i=0; i<items.length; i++) { %>
+              <tr>
+                <th scope="row"><%= items[i].ID %></th>
+                <td class=""><%= items[i].titulo %></td>
+                <td class=""><img height="200" src=" <%= items[i].imagen %> "></td>
+                <td class=""><%= items[i].descripcion %></td>
+                <td><%= items[i].precio %></td>
+                <td class="">
+                  <a href="/edit/<%= items[i].ID %>" class="btn btn-primary" tabindex="5">Editar</a>
+                  <a href="/delete/<%= items[i].ID %>" class="btn btn-primary" tabindex="6">Eliminar</a></a>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+    <hr width="100%">
+    <div class="container">
+      <a href="/create" class="btn btn-outline-primary mt-4"><i class='bx bx-add-to-queue bx-md'></i></a>
+    </div>
+
+ <%- include ('layouts/footer.ejs') %>
+ 
